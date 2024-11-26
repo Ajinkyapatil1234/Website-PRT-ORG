@@ -3,10 +3,14 @@ pipeline {
     environment {
         registry = "ajinkyadoc1234/my-website"
         registryCredential = 'dockerhub_credentials'
-        kubernetesCred = 'kubeconfig-credentials-id'
         sshCred = 'ssh-key-credentials'
     }
     stages {
+        stage('Checkout') {
+            steps {
+                git 'https://github.com/Ajinkyapatil1234/Website-PRT-ORG.git'
+            }
+        }
         stage('Build') {
             steps {
                 script {
@@ -37,3 +41,4 @@ pipeline {
         }
     }
 }
+
