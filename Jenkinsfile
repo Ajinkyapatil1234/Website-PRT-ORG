@@ -21,10 +21,10 @@ pipeline {
             steps {
                 script {
                     withCredentials([sshUserPrivateKey(credentialsId: sshCred, keyFileVariable: 'SSH_KEY')]) {
-                        sh 'scp -i $SSH_KEY k8s/deployment.yaml user@k8s-slave-instance:/home/user/'
-                        sh 'scp -i $SSH_KEY k8s/service.yaml user@k8s-slave-instance:/home/user/'
-                        sh 'ssh -i $SSH_KEY user@k8s-slave-instance kubectl apply -f /home/user/deployment.yaml'
-                        sh 'ssh -i $SSH_KEY user@k8s-slave-instance kubectl apply -f /home/user/service.yaml'
+                        sh 'scp -i $SSH_KEY k8s/deployment.yaml user@52.66.144.27:/home/user/'
+                        sh 'scp -i $SSH_KEY k8s/service.yaml user@52.66.144.27:/home/user/'
+                        sh 'ssh -i $SSH_KEY user@52.66.144.27 kubectl apply -f /home/user/deployment.yaml'
+                        sh 'ssh -i $SSH_KEY user@52.66.144.27 kubectl apply -f /home/user/service.yaml'
                     }
                 }
             }
