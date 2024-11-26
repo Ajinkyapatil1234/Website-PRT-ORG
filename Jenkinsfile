@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/Ajinkyapatil1234/Website-PRT-ORG.git'
+                git branch: 'main', url: 'https://github.com/Ajinkyapatil1234/Website-PRT-ORG.git'
             }
         }
         stage('Build') {
@@ -41,4 +41,5 @@ pipeline {
         }
     }
 }
+
 
