@@ -2,7 +2,6 @@ pipeline {
     agent any
     environment {
         registry = "ajinkyadoc1234/my-website"
-        registryCredential = 'dockerhub_credentials'
         sshCred = 'ssh-key-credentials'
     }
     stages {
@@ -15,15 +14,6 @@ pipeline {
             steps {
                 script {
                     docker.build registry
-                }
-            }
-        }
-        stage('Push') {
-            steps {
-                script {
-                    docker.withRegistry('', registryCredential) {
-                        docker.image(registry).push('latest')
-                    }
                 }
             }
         }
