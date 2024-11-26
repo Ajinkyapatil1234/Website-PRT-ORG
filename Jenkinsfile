@@ -21,6 +21,7 @@ pipeline {
             steps {
                 script {
                     withCredentials([sshUserPrivateKey(credentialsId: sshCred, keyFileVariable: 'SSH_KEY')]) {
+                        sh 'mkdir -p ~/.ssh'
                         sh 'ssh-keyscan -H 13.235.24.122 >> ~/.ssh/known_hosts'
                         sh 'scp -i $SSH_KEY k8s/deployment.yaml ubuntu@13.235.24.122:/home/ubuntu/'
                         sh 'scp -i $SSH_KEY k8s/service.yaml ubuntu@13.235.24.122:/home/ubuntu/'
@@ -32,6 +33,5 @@ pipeline {
         }
     }
 }
-
 
 
